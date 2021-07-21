@@ -25,10 +25,10 @@ const Home = () => {
       
       /* Getting Data */
       /* Data lives in the `compData` object
-       * by default it is using the name provided `state.Home` 
+       * by default it is using the name provided ex: `state.Home` 
        */
       <pre>
-        compData.banana = {compData.banana}
+        compData.fruit = {compData.fruit}
       </pre>
       /* Get data from another compData with getCompData */
       <pre>
