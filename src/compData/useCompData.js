@@ -7,7 +7,7 @@ import actions from './actionConstants';
  * @param  {string} name the name of the compData object in the store
  * @param initialValue
  */
-const useCompData = (name, initialValue = {}) => {
+const useCompData = (name, initialValue) => {
   if (!name || typeof name !== 'string') {
     throw Error(`Must provide a name to useCompData(name), got ${name}`);
   }
@@ -33,8 +33,11 @@ const useCompData = (name, initialValue = {}) => {
     return dispatch({ type: actions.SET_DATA, name: compName, payload });
   }, [name, dispatch]);
 
+  const isDataObjEmpty = Object.keys(getCompData(name)).length === 0;
+  const isInitialValueProvided = initialValue !== undefined;
+  const shouldSetInitialData = isInitialValueProvided && isDataObjEmpty;
   useEffect(() => {
-    if (initialValue !== undefined && Object.keys(getCompData(name)).length) {
+    if (shouldSetInitialData) {
       setData(initialValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

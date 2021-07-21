@@ -4,7 +4,10 @@ import { useEffect } from 'react';
 
 function App() {
   const { setData, compData } = useCompData('Home');
-  const { setData: setAnotherData, compData: anotherCompData } = useCompData('Another', {banana: 'yes'});
+  const {
+    setData: setAnotherData,
+    compData: anotherCompData
+  } = useCompData('Another', {banana: 'yes'});
 
   useEffect(() => {
     if (compData.name === undefined) {
